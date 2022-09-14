@@ -75,7 +75,7 @@ return packer.startup(function(use)
 			'saadparwaiz1/cmp_luasnip',
 		},
     config = function()
-      require('plugin/nvim-cmp' )
+      require('plugins-setup/nvim-cmp' )
     end
     }
 
@@ -94,7 +94,7 @@ return packer.startup(function(use)
       'hrsh7th/nvim-cmp',
     },
     config = function()
-      require('plugin/nvim-lspconfig')
+      require('plugins-setup/nvim-lspconfig')
     end
   }
 
