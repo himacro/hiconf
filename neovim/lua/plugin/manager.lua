@@ -64,15 +64,6 @@ return packer.startup(function(use)
 	use 'tanvirtin/monokai.nvim'
 	use { 'rose-pine/neovim', as = 'rose-pine' }
 
-	-- LSP
-  use {'williamboman/nvim-lsp-installer',
-    config = function()
-      require('nvim-lsp-installer').setup{}
-    end
-  }
-
-	use 'neovim/nvim-lspconfig'
-
   -- Autocomplete
 	use {
 		'hrsh7th/nvim-cmp',
@@ -83,7 +74,29 @@ return packer.startup(function(use)
 			'hrsh7th/cmp-buffer',
 			'saadparwaiz1/cmp_luasnip',
 		},
-	}
+    config = function()
+      require('plugin/nvim-cmp' )
+    end
+    }
+
+	-- LSP
+  use {
+    'williamboman/nvim-lsp-installer',
+    config = function()
+      require('nvim-lsp-installer').setup{}
+    end
+  }
+
+	use {
+    'neovim/nvim-lspconfig',
+		requires = {
+      'williamboman/nvim-lsp-installer',
+      'hrsh7th/nvim-cmp',
+    },
+    config = function()
+      require('plugin/nvim-lspconfig')
+    end
+  }
 
 	-- Statusline
 	use {

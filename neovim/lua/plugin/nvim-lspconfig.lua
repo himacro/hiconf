@@ -1,8 +1,8 @@
-local lsp_installer_status_ok, lsp_installer = pcall(require, 'nvim-lsp-installer')
-if not lsp_installer_status_ok  then
-  return
-end
-lsp_installer.setup {}
+-- local lsp_installer_status_ok, lsp_installer = pcall(require, 'nvim-lsp-installer')
+-- if not lsp_installer_status_ok  then
+--    return
+-- end
+-- lsp_installer.setup {}
 
 local lsp_status_ok, lspconfig = pcall(require, 'lspconfig')
 if not lsp_status_ok then
@@ -24,12 +24,12 @@ vim.diagnostic.config({
     source = "always",
     header = "",
     prefix = "",
-	},
+  },
 })
 
 -- Show line diagnostics automatically in hover window
 vim.cmd([[
-  autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, { focus = false })
+autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, { focus = false })
 ]])
 
 -- Add additional capabilities supported by nvim-cmp
@@ -62,11 +62,11 @@ local on_attach = function(client, bufnr)
   -- Highlighting references
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec([[
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
+    augroup lsp_document_highlight
+    autocmd! * <buffer>
+    autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+    augroup END
     ]], false)
   end
 
