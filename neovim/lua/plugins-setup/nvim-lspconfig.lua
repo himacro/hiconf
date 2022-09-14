@@ -133,3 +133,23 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+local nlua_status_ok, nlua = pcall(require, 'nvim.lsp.nvim')
+if not nlua_status_ok  then
+  return
+end
+nlua.setup(
+  lspconfig,
+  {
+    on_attach = on_attach,
+    root_dir = root_dir,
+    capabilities = capabilities,
+    flags = {
+      debounce_text_changes = 150,
+    },
+    globals = {
+      "Color", "c", "Group", "g", "s", "vim"
+    }
+  }
+)
+
