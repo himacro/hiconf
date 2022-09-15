@@ -3,15 +3,15 @@ local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
-	packer_bootstrap = fn.system({
-		'git',
-		'clone',
-		'--depth',
-		'1',
-		'https://github.com/wbthomason/packer.nvim',
-		install_path
-	})
-	vim.o.runtimepath = vim.fn.stdpath('data') .. '/site/pack/*/start/*,' .. vim.o.runtimepath
+  packer_bootstrap = fn.system({
+    'git',
+    'clone',
+    '--depth',
+    '1',
+    'https://github.com/wbthomason/packer.nvim',
+    install_path
+  })
+  vim.o.runtimepath = vim.fn.stdpath('data') .. '/site/pack/*/start/*,' .. vim.o.runtimepath
 end
 
 -- Autocommand that reloads neovim whenever you save the packer_init.lua file
@@ -134,13 +134,23 @@ return packer.startup(function(use)
   use {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
-    requires = { 
+    requires = {
       "nvim-lua/plenary.nvim",
       "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
     },
     config = function ()
       require('plugins-setup/neo-tree')
+    end
+  }
+
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      require('nvim-treesitter.install').update({ with_sync = true })
+    end,
+    config = function()
+      require('plugins-setup/nvim-treesitter')
     end
   }
 
