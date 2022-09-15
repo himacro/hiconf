@@ -132,9 +132,18 @@ local nlua_status_ok, nlua = pcall(require, 'nlua.lsp.nvim')
 if not nlua_status_ok  then
   return
 end
+
+local lua_lsp_cmd = {
+  vim.fn.stdpath('data') .. '/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server',
+  '-E',
+  vim.fn.stdpath('data') .. '/lsp_servers/sumneko_lua/extension/server/main.lua',
+}
+
 nlua.setup(
   lspconfig,
   {
+--    cmd = vim.fn.stdpath('data') .. '/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server',
+    cmd = lua_lsp_cmd,
     on_attach = on_attach,
     root_dir = root_dir,
     capabilities = capabilities,
