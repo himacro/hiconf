@@ -6,7 +6,6 @@ local function map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-
 ----------------------------------------------------------
 -- Leader key
 ----------------------------------------------------------
@@ -35,5 +34,28 @@ map('t', '<A-j>', '<C-\\><C-N><C-w>j')
 map('t', '<A-k>', '<C-\\><C-N><C-w>k')
 map('t', '<A-l>', '<C-\\><C-N><C-w>l')
 
+local function has_module(module_name)
+  local status_ok, _ = pcall(require, module_name)
+  return status_ok
+end
+
+if has_module('telescope') then
+  map('n', '<leader>ff', "<cmd>lua require('telescope.builtin').find_files()<cr>")
+  map('n', '<leader>fg', "<cmd>lua require('telescope.builtin').live_grep()<cr>")
+  map('n', '<leader>fb', "<cmd>lua require('telescope.builtin').buffers()<cr>")
+  map('n', '<leader>fh', "<cmd>lua require('telescope.builtin').help_tags()<cr>")
+  map('n', '<leader>fr', "<cmd>lua require('telescope.builtin').lsp_references()<cr>")
+  map('n', '<leader>fw', "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>")
+
+  map('n', '<C-p>', "<cmd>lua require('telescope.builtin').find_files()<cr>")
+  map('i', '<C-p>', "<cmd>lua require('telescope.builtin').find_files()<cr>")
+  map('i', '<F2>', "<cmd>lua require('telescope.builtin').builtin()<cr>")
+  map('n', '<F2>', "<cmd>lua require('telescope.builtin').builtin()<cr>")
+  -- map('n', '<C-S-f>', "<cmd>lua require('telescope.builtin').live_grep()<cr>")
+  -- map('i', '<C-S-f>', "<cmd>lua require('telescope.builtin').live_grep()<cr>")
+end
 
 
+if has_module('neo-tree') then
+  map('n', '\\', '<cmd>Neotree reveal<cr>')
+end
