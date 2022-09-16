@@ -59,3 +59,10 @@ end
 if has_module('neo-tree') then
   map('n', '\\', '<cmd>Neotree reveal<cr>')
 end
+
+if has_module('FTerm') then
+   map('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<cr>')
+   map('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<cr>')
+   map('n', '<C-`>', '<CMD>lua require("FTerm").toggle()<cr>')
+   map('t', '<C-`>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<cr>')
+end

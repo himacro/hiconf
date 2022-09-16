@@ -154,6 +154,22 @@ return packer.startup(function(use)
     end
   }
 
+  use {
+    'nanozuki/tabby.nvim',
+    config = function()
+      require('plugins-setup/tabby')
+    end
+  }
+
+  
+  use {
+    "numToStr/FTerm.nvim",
+    config = function()
+      require('plugins-setup/FTerm')
+    end
+  }
+
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if packer_bootstrap then
