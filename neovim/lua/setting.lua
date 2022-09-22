@@ -24,7 +24,11 @@ opt.linebreak = true        -- Wrap on word boundary
 opt.wrap = false
 opt.termguicolors = true    -- Enable 24-bit RGB colors
 opt.laststatus=3            -- Set global statusline
-opt.guifont = { "Sarasa Term SC", ":h12" }
+opt.guifont = { 
+    "Sarasa Mono SC Nerd Font", ":h13", 
+    "FiraCode NF", ":h13",
+    "Cascadia Code", ":h13",
+}
 
 -----------------------------------------------------------
 -- Tabs, indent
