@@ -1,22 +1,21 @@
 local function map(mode, lhs, rhs, opts)
-    local options = {noremap=true, silent=true}
-    if opts then
-        options = vim.tbl_extend('force', options, opts)
-    end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+  local options = {noremap=true, silent=true}
+  if opts then
+    options = vim.tbl_extend('force', options, opts)
+  end
+  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 ----------------------------------------------------------
 -- Leader key
 ----------------------------------------------------------
-vim.g.mapleader = ','
-
+-- vim.g.mapleader = ','
+vim.g.mapleader = '\\'
 
 ----------------------------------------------------------
 -- Search
 ----------------------------------------------------------
 map('n', '<leader>c', ':nohl<CR>')
-
 
 ----------------------------------------------------------
 -- Navigation
@@ -46,6 +45,7 @@ if has_module('telescope') then
   map('n', '<leader>fh', "<cmd>lua require('telescope.builtin').help_tags()<cr>")
   map('n', '<leader>fr', "<cmd>lua require('telescope.builtin').lsp_references()<cr>")
   map('n', '<leader>fw', "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>")
+  map('n', '<leader>fa', "<cmd>lua require('telescope.builtin').builtin()<cr>")
 
   map('n', '<C-p>', "<cmd>lua require('telescope.builtin').find_files()<cr>")
   map('i', '<C-p>', "<cmd>lua require('telescope.builtin').find_files()<cr>")
@@ -55,14 +55,14 @@ if has_module('telescope') then
   -- map('i', '<C-S-f>', "<cmd>lua require('telescope.builtin').live_grep()<cr>")
 end
 
-
 if has_module('neo-tree') then
-  map('n', '\\', '<cmd>Neotree reveal<cr>')
+  map('n', '<leader>\\', '<cmd>Neotree toggle<cr>')
 end
 
 if has_module('FTerm') then
-   map('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<cr>')
-   map('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<cr>')
-   map('n', '<C-`>', '<CMD>lua require("FTerm").toggle()<cr>')
-   map('t', '<C-`>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<cr>')
+  map('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<cr>')
+  map('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<cr>')
+  map('n', '<C-`>', '<CMD>lua require("FTerm").toggle()<cr>')
+  map('t', '<C-`>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<cr>')
 end
+

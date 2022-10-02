@@ -161,7 +161,6 @@ return packer.startup(function(use)
     end
   }
 
-  
   use {
     "numToStr/FTerm.nvim",
     config = function()
@@ -169,6 +168,20 @@ return packer.startup(function(use)
     end
   }
 
+  use {
+    "LhKipp/nvim-nu",
+    requires = {
+      "nvim-treesitter/nvim-treesitter"
+    },
+    run = function()
+      vim.cmd('TSInstall nu')
+    end,
+    config = function()
+      require('nu').setup({
+          complete_cmd_names = false, 
+      })
+    end
+  }
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
