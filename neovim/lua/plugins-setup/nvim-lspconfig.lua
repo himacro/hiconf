@@ -126,7 +126,7 @@ end
 -- map buffer local keybindings when the language server attaches.
 -- Add your language server below:
 -- local servers = { 'bashls', 'pyright', 'clangd', 'html', 'cssls', 'tsserver' }
-local servers = { 'bashls', 'pyright', 'clangd', 'sumneko_lua' }
+local servers = { 'bashls', 'pyright', 'ccls', 'sumneko_lua' }
 
 -- Call setup
 for _, lsp in ipairs(servers) do

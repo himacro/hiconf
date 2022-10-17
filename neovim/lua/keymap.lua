@@ -49,8 +49,8 @@ if has_module('telescope') then
 
   map('n', '<C-p>', "<cmd>lua require('telescope.builtin').find_files()<cr>")
   map('i', '<C-p>', "<cmd>lua require('telescope.builtin').find_files()<cr>")
-  map('i', '<F2>', "<cmd>lua require('telescope.builtin').builtin()<cr>")
-  map('n', '<F2>', "<cmd>lua require('telescope.builtin').builtin()<cr>")
+  -- map('i', '<F2>', "<cmd>lua require('telescope.builtin').builtin()<cr>")
+  -- map('n', '<F2>', "<cmd>lua require('telescope.builtin').builtin()<cr>")
   -- map('n', '<C-S-f>', "<cmd>lua require('telescope.builtin').live_grep()<cr>")
   -- map('i', '<C-S-f>', "<cmd>lua require('telescope.builtin').live_grep()<cr>")
 end
@@ -65,4 +65,9 @@ if has_module('FTerm') then
   map('n', '<C-`>', '<CMD>lua require("FTerm").toggle()<cr>')
   map('t', '<C-`>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<cr>')
 end
+
+map('n', '<F2>',"<cmd>lua vim.lsp.buf.rename()<CR>")
+map('i', '<F2>',"<cmd>lua vim.lsp.buf.rename()<CR>")
+map('n', '<A-t>',"<cmd>tabnext<CR>")
+map('n', '<A-T>',"<cmd>tabprev<CR>")
 
