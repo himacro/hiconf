@@ -59,12 +59,16 @@ if has_module('neo-tree') then
   map('n', '<leader>\\', '<cmd>Neotree toggle<cr>')
 end
 
-if has_module('FTerm') then
+if has_module('toggleterm') then
+--  map('n', '<A-i>', '<CMD>ToggleTerm direction=float<CR>')
+--  map('t', '<A-i>', '<C-\\><C-n><CMD>ToggleTerm<CR>')
+elseif has_module('FTerm') then
   map('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<cr>')
   map('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<cr>')
   map('n', '<C-`>', '<CMD>lua require("FTerm").toggle()<cr>')
   map('t', '<C-`>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<cr>')
 end
+
 
 map('n', '<F2>',"<cmd>lua vim.lsp.buf.rename()<CR>")
 map('i', '<F2>',"<cmd>lua vim.lsp.buf.rename()<CR>")

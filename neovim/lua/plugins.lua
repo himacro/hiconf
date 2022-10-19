@@ -161,10 +161,18 @@ return packer.startup(function(use)
     end
   }
 
+--  use {
+--    "numToStr/FTerm.nvim",
+--    config = function()
+--      require('plugins-setup/FTerm')
+--    end
+--  }
+
   use {
-    "numToStr/FTerm.nvim",
+    "akinsho/toggleterm.nvim", 
+    tag = '*',
     config = function()
-      require('plugins-setup/FTerm')
+      require('plugins-setup/toggleterm')
     end
   }
 
