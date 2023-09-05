@@ -7,7 +7,7 @@ if wezterm.config_builder then
 end
 
 -- font
-config.font = "Sarasa Term SC Nerd"
+config.font = wezterm.font("Sarasa Term SC Nerd")
 config.font_size = 12.0
 config.line_height = 1.05
 config.cell_width = 1
